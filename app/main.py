@@ -5,15 +5,17 @@ from pydantic import BaseModel
 from app.reddit_agent import RedditAgent
 import logging
 import os
+import uvicorn
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Reddit Search Agent")
 
+# Update CORS to allow Render frontend URL or wildcard
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["*"],  # Use wildcard for flexibility; replace with specific Render frontend URL after deployment
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -60,3 +62,7 @@ async def get_file(filename: str):
 @app.get("/")
 async def root():
     return {"message": "Reddit Search Agent API"}
+
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
