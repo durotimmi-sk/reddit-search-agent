@@ -12,10 +12,9 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Reddit Search Agent")
 
-# Update CORS to allow Render frontend URL or wildcard
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Use wildcard for flexibility; replace with specific Render frontend URL after deployment
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -62,6 +61,10 @@ async def get_file(filename: str):
 @app.get("/")
 async def root():
     return {"message": "Reddit Search Agent API"}
+
+@app.head("/")
+async def head_root():
+    return {}
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8000))
