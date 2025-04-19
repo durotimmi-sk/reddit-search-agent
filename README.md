@@ -1,4 +1,4 @@
-Reddit Search Agent
+![Untitled1](https://github.com/user-attachments/assets/3dd2af2c-8aaf-471b-a6d0-b5744ac324ab)Reddit Search Agent
 Reddit Search Agent is a web application that automates posting, searching, and scheduling content on Reddit. It uses a FastAPI backend with PRAW for Reddit interactions and a Groq-powered AI to generate engaging posts. The React frontend provides a user-friendly interface to generate posts, edit content, and manage interactions.
 Features
 
@@ -20,15 +20,18 @@ Git: For cloning the repo
 Setup Instructions
 1. Clone the Repository
 
-bash```
+bash
+```
   git clone https://github.com/durotimmi-sk/reddit-search-agent.git
   cd reddit-search-agent
 ```
+
 2. Backend Setup
 
 Install Python Dependencies:
 
-bash```
+bash
+```
   python3 -m venv venv
   source venv/bin/activate
   pip install -r requirements.txt
@@ -44,7 +47,8 @@ openpyxl
 
 Configure Environment Variables:Create a .env file in the root directory:
 
-bash```
+bash
+```
   nano .env
 ```
 
@@ -62,7 +66,8 @@ Get Groq API key: Groq Console.
 
 Run the Backend:
 
-bash```
+bash
+```
   uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
@@ -71,19 +76,22 @@ bash```
 
 Navigate to Frontend:
 
-bash```
+bash
+```
   cd frontend
 ```
 
 Install Node.js Dependencies:
 
-bash```
+bash
+```
   npm install
 ```
 
 Run the Frontend:
 
-bash```
+bash
+```
   npm start
 ```
 
@@ -113,6 +121,9 @@ Download results as Excel.
 Schedule Posts:
 Enter: schedule generated post for startups about AI agents every 60 minutes.
 
+![Untitled1](https://github.com/user-attachments/assets/30a2218d-3bbb-4dbe-bc67-36445f352c8d)
+
+![Untitled2](https://github.com/user-attachments/assets/815701d4-5c55-41e3-ac70-a10abd660e4a)
 
 
 API Endpoints
@@ -120,13 +131,15 @@ API Endpoints
 Health Check: GET /health
 Handle Prompt: POST /prompt
 
-bash```
+bash
+```
   curl -X POST http://localhost:8000/prompt -H "Content-Type: application/json" -d '{"prompt": "generate post for startups about AI agents"}'
 ```
 
 Boost Karma: POST /boost_karma
 
-bash```
+bash
+```
   curl -X POST http://localhost:8000/boost_karma
 ```
 
@@ -135,13 +148,15 @@ Example Commands
 
 Generate and post:
 
-bash```
+bash
+```
   curl -X POST http://localhost:8000/prompt -H "Content-Type: application/json" -d '{"prompt": "post generated for startups with title AI Agents: Worth It? (i will not promote) text: AI agents are transforming startups..."}'
 ```
 
 Search and export:
 
-bash```
+bash
+```
   curl -X POST http://localhost:8000/prompt -H "Content-Type: application/json" -d '{"prompt": "search for AI agents in startups limit 10"}'
 ```
 
