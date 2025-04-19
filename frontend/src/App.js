@@ -1,4 +1,3 @@
-// frontend/src/App.js
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { MessageCircle, Send, Image as ImageIcon, X } from 'lucide-react';
@@ -46,7 +45,7 @@ function App() {
     setShowSuggestions(false);
 
     try {
-      const response = await axios.post('http://localhost:8000/chat', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/chat`, {
         prompt: userInput,
         search_results: messages.filter(m => m.results).slice(-1)[0]?.results || null
       }, {
@@ -198,7 +197,7 @@ function App() {
               {message.download_file && (
                 <div className="download">
                   <a
-                    href={`http://localhost:8000/files/${message.download_file}`}
+                    href={`${process.env.REACT_APP_API_URL}/files/${message.download_file}`}
                     download
                     className="download-button"
                   >
